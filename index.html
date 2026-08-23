@@ -1,1 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>DropZone — Dicas para Fortnite</title>
+
+  <meta name="description" content="DropZone: dicas, treinos e estratégias para melhorar no Fortnite.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #08090d;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 9, 13, 0.95);
+      border-bottom: 1px solid #242630;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      height: 72px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #7c5cff;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #b8bac5;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(124, 92, 255, 0.25), transparent 40%),
+        #08090d;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 14px;
+      border: 1px solid #38324f;
+      border-radius: 30px;
+      color: #a895ff;
+      background: rgba(124, 92, 255, 0.08);
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(45px, 8vw, 85px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #8b72ff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #a9abb6;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 24px;
+      background: #7c5cff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #9179ff;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    .section-title p {
+      color: #858793;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #111219;
+      border: 1px solid #252733;
+      border-radius: 15px;
+      padding: 25px;
+      text-decoration: none;
+      color: white;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #7c5cff;
+      background: #14151e;
+    }
+
+    .icon {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 7px;
+      font-size: 18px;
+    }
+
+    .card p {
+      color: #898b97;
+      font-size: 14px;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .article {
+      background: #111219;
+      border: 1px solid #252733;
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .article small {
+      color: #8b72ff;
+      font-weight: bold;
+    }
+
+    .article h3 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .article p {
+      color: #9294a0;
+      font-size: 14px;
+    }
+
+    .read {
+      display: inline-block;
+      margin-top: 18px;
+      color: #a895ff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    footer {
+      border-top: 1px solid #242630;
+      padding: 35px 25px;
+      text-align: center;
+      color: #686a75;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #a0a2ad;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        display: none;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .articles {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .categories {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">DROP<span>ZONE</span></div>
+
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#treinos">Treinos</a>
+        <a href="#guias">Guias</a>
+        <a href="#competitivo">Competitivo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+
+        <div class="tag">GUIAS • TREINOS • ESTRATÉGIAS</div>
+
+        <h1>
+          MELHORE NO<br>
+          <span>FORTNITE.</span>
+        </h1>
+
+        <p>
+          Aprenda a melhorar sua mira, edição, construção,
+          posicionamento e tomada de decisão com guias simples
+          e objetivos de treino.
+        </p>
+
+        <a href="#treinos" class="button">
+          COMEÇAR A TREINAR →
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section" id="treinos">
+
+      <div class="section-title">
+        <h2>Escolha seu treino</h2>
+        <p>Encontre o que você precisa melhorar.</p>
+      </div>
+
+      <div class="categories">
+
+        <a class="card" href="#mira">
+          <div class="icon">🎯</div>
+          <h3>Mira</h3>
+          <p>Melhore precisão, tracking e controle da mira.</p>
+        </a>
+
+        <a class="card" href="#edicao">
+          <div class="icon">✂️</div>
+          <h3>Edição</h3>
+          <p>Treinos para editar mais rápido e com consistência.</p>
+        </a>
+
+        <a class="card" href="#build">
+          <div class="icon">🏗️</div>
+          <h3>Construção</h3>
+          <p>Aprenda técnicas de build e proteção.</p>
+        </a>
+
+        <a class="card" href="#estrategia">
+          <div class="icon">🧠</div>
+          <h3>Estratégia</h3>
+          <p>Melhore posicionamento e tomada de decisão.</p>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section" id="guias">
+
+      <div class="section-title">
+        <h2>Guias em destaque</h2>
+        <p>Conteúdo para começar a evoluir.</p>
+      </div>
+
+      <div class="articles">
+
+        <article class="article">
+          <small>MIRA</small>
+          <h3>Como melhorar sua mira</h3>
+          <p>
+            Descubra como criar uma rotina de treino para
+            melhorar sua precisão e consistência.
+          </p>
+          <a href="#" class="read">Ler guia →</a>
+        </article>
+
+        <article class="article">
+          <small>EDIÇÃO</small>
+          <h3>Como editar mais rápido</h3>
+          <p>
+            Exercícios simples para melhorar velocidade,
+            precisão e controle durante as edições.
+          </p>
+          <a href="#" class="read">Ler guia →</a>
+        </article>
+
+        <article class="article">
+          <small>COMPETITIVO</small>
+          <h3>Como jogar melhor no competitivo</h3>
+          <p>
+            Aprenda conceitos de posicionamento,
+            rotação e tomada de decisão.
+          </p>
+          <a href="#" class="read">Ler guia →</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section" id="competitivo">
+
+      <div class="section-title">
+        <h2>Seu objetivo</h2>
+        <p>Escolha onde você quer chegar.</p>
+      </div>
+
+      <div class="categories">
+
+        <div class="card">
+          <div class="icon">🎮</div>
+          <h3>Casual</h3>
+          <p>Quer simplesmente jogar melhor e se divertir.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏆</div>
+          <h3>Competitivo</h3>
+          <p>Quer começar a levar suas partidas a sério.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Alta performance</h3>
+          <p>Quer melhorar mecânica e consistência.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>Evolução</h3>
+          <p>Quer acompanhar sua evolução ao longo do tempo.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      <strong>DropZone</strong> — site de fã independente.
+    </p>
+
+    <p>
+      Este site não é afiliado, patrocinado ou aprovado pela Epic Games.
+      Fortnite é uma marca da Epic Games.
+    </p>
+
+    <p style="margin-top: 10px;">
+      © 2026 DropZone
+    </p>
+  </footer>
+
+</body>
+</html>
